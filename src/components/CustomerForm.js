@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 
 const CustomerForm = ({ onNext }) => {
+  // State to store the customer form data
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -18,14 +19,16 @@ const CustomerForm = ({ onNext }) => {
     deliveryDate: "",
     boxType: "",
     weight: "",
-    quantity: 0,
+    quantitys: 0,
   });
 
+  // Handle changes to the form data
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  // Handle submitting the form
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
@@ -38,6 +41,7 @@ const CustomerForm = ({ onNext }) => {
         Customer Details
       </Typography>
       <Grid container spacing={3}>
+        {/* Customer Name field */}
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -49,6 +53,8 @@ const CustomerForm = ({ onNext }) => {
             onChange={handleChange}
           />
         </Grid>
+
+        {/* Phone Number field */}
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -60,6 +66,8 @@ const CustomerForm = ({ onNext }) => {
             onChange={handleChange}
           />
         </Grid>
+
+        {/* Order Date field */}
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -75,6 +83,8 @@ const CustomerForm = ({ onNext }) => {
             onChange={handleChange}
           />
         </Grid>
+
+        {/* Delivery Date field */}
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -90,6 +100,8 @@ const CustomerForm = ({ onNext }) => {
             onChange={handleChange}
           />
         </Grid>
+
+        {/* Box Type field */}
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
             <InputLabel id="boxType-label">Box Type</InputLabel>
@@ -100,13 +112,15 @@ const CustomerForm = ({ onNext }) => {
               value={formData.boxType}
               onChange={handleChange}
             >
-              <MenuItem value="Marvels Menu">Marvels Menu</MenuItem>
+              <MenuItem value="Marvellous Menu">Marvellous Menu</MenuItem>
               <MenuItem value="VIP Menu">VIP Menu</MenuItem>
               <MenuItem value="Luxury Menu">Luxury Menu</MenuItem>
-              <MenuItem value="Delight">Delight</MenuItem>
+              <MenuItem value="Delight">Dry Fruit Delight</MenuItem>
             </Select>
           </FormControl>
         </Grid>
+
+        {/* Weight field */}
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
             <InputLabel id="weight-label">Weight</InputLabel>
@@ -123,19 +137,23 @@ const CustomerForm = ({ onNext }) => {
             </Select>
           </FormControl>
         </Grid>
+
+        {/* Quantity field */}
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="quantity"
-            name="quantity"
+            id="quantitys"
+            name="quantitys"
             label="Quantity"
             type="number"
             fullWidth
-            value={formData.quantity}
+            value={formData.quantitys}
             onChange={handleChange}
             inputProps={{ min: 1 }}
           />
         </Grid>
+
+        {/* Next button */}
         <Grid item xs={12}>
           <Button type="submit" variant="contained" color="primary">
             Next
